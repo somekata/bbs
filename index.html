@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>細菌バトルゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scrollable-container">
+    <h1 style="text-align: center;">細菌バトルゲームへ<br>ようこそ</h1>
+    
+    <!-- ボタンをタイトルと説明の間に配置 -->
+    <div class="button-container">
+      <button id="open-game-button">開始する</button>
+    </div>
+
+    <p>
+      <h3>ゲームの解説</h3>
+      <p>
+        　このゲームは、抗菌薬適正使用を楽しく学ぶために開発されたバトルシミュレーションゲームです。プレイヤーは、細菌の耐性や攻撃力に応じた最適な抗菌薬を選びながらバトルを進めます。細菌ごとに異なる耐性（AMR）レベルが設定され、特定の細菌はランダムにAMRレベルが変動します。プレイヤーは、グラム染色や培養、同定、感受性検査を行い、敵の特性を見極めながら抗菌薬の有効性を判断し、戦略を立てて戦います。レベルが上がるごとに出現する細菌の種類が増え、治療や検査が複雑化していき、プレイヤーの判断力が試されます。また、レベルアップやゴールドの獲得により、アイテムや薬を購入することができ、楽しく学びながら抗菌薬の適正使用を理解することができます。今後もアップデートを予定しており、より多様なシナリオや機能の追加が期待されています。<br>
+        　バグや設定上の不具合に気付かれた場合は、コメントでお知らせください。
+      </p>
+
+      <h3>バージョン情報</h3>
+      <p>    
+        ver 0.0001  date 2024-09-18<br> 
+        ver 0.0002  date 2024-09-19<br> 
+        ver 0.0003  date 2024-09-20
+      </p>
+    </p>  
+
+  </div>
+
+<script> 
+    const openAntibiogramButton = document.getElementById('open-game-button');
+    openAntibiogramButton.addEventListener('click', () => {
+        window.location.href = 'game.html'; // 現在のウィンドウで game.html を開く
+    });
+</script>
+
+<style>
+  /* コンテナの中央にボタンを配置 */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* タイトルと説明の間に余白を追加 */
+  }
+
+  /* ボタンのスタイル */
+  #open-game-button {
+    width: 300px;
+    height: 50px; /* 高さを調整 */
+    background: linear-gradient(45deg, #ff6b6b, #ffcc5c); /* グラデーション */
+    border-radius: 15px; /* 角を丸くする */
+    border: 3px solid gray; /* 外側の枠 */
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* アニメーション */
+    box-shadow: 0 0 0 3px darkgray, 0 0 0 6px lightgray; /* 3重の枠 */
+  }
+
+  /* ボタンをホバーした時の効果 */
+  #open-game-button:hover {
+    transform: scale(1.1); /* 少し大きくなる */
+    background-color: darkred;
+  }
+
+  /* スクロールを可能にするスタイル */
+  .scrollable-container {
+    max-height: 100vh; /* 画面全体の高さまで */
+    overflow-y: auto;  /* 縦方向のスクロールを有効に */
+    padding: 20px;
+    box-sizing: border-box; /* paddingを含めた幅・高さの計算 */
+  }
+
+  /* レスポンシブデザインのための追加 */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 全体のスクロールを無効化して、コンテナ内でスクロール */
+  }
+</style>
+</body>
+</html>

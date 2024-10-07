@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antibiogram and AWaRe Classification</title>
+  <link rel="stylesheet" href="aware.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="pop-theme"> <!-- Default theme is pop -->
+
+  <h1>AWaRe分類と抗菌薬感受性</h1>
+
+  <label class="switch">
+    <input type="checkbox" id="theme-toggle">
+    <span class="slider"></span>
+  </label>
+  <p id="theme-label">Pop Theme</p>
+
+  <section class="section">
+    <h2>AWaRe分類とDASCの概要</h2>
+    <p><b>AWaRe分類</b>は、抗菌薬の適正使用を促進するための分類システムです：</p>
+    <ul>
+      <li><b>Access（アクセス）</b>：広く使用される抗菌薬で、効果的かつ安全とされています。</li>
+      <li><b>Watch（ウォッチ）</b>：耐性リスクが高いため、慎重に使用すべき抗菌薬です。</li>
+      <li><b>Reserve（リザーブ）</b>：多剤耐性病原体に対してのみ使用すべき、最後の手段となる抗菌薬です。</li>
+    </ul>
+    <p><b>DASC（Days of Antibiotic Spectrum Coverage）</b>は、ASC（Antibiotic Spectrum Coverage, その抗菌薬がカバーするスペクトル）<sup>*1</sup>の消費日数を指し、ゲーム内では抗菌薬の選択と使用に関する学習を支援する指標として使用しています。このゲームでは、DASCを通じて抗菌薬の適正使用の重要性を学び、効果的な抗菌薬治療の実践を目指します。</p>
+  </section>
+  
+  <section class="section">
+    <h3>抗菌薬のASCとAWaRe分類</h3>
+    <table border="1">
+      <tr>
+        <th>抗菌薬名</th>
+        <th>ASC</th>
+        <th>AWaRe分類</th>
+      </tr>
+      <tr>
+        <td>アンピシリン</td>
+        <td>5</td>
+        <td class="access">Access</td>
+      </tr>
+      <tr>
+        <td>スルバクタム/アンピシリン</td>
+        <td>8</td>
+        <td class="access">Access</td>
+      </tr>
+      <tr>
+        <td>ピペラシリン</td>
+        <td>7</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>タゾバクタム/ピペラシリン</td>
+        <td>11</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>セファゾリン</td>
+        <td>3</td>
+        <td class="access">Access</td>
+      </tr>
+      <tr>
+        <td>セフトリアキソン</td>
+        <td>6</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>セフタジジム</td>
+        <td>6</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>セフェピム</td>
+        <td>8</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>メロペネム</td>
+        <td>12</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>バンコマイシン</td>
+        <td>5</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>テイコプラニン</td>
+        <td>5</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>アルベカシン</td>
+        <td>5</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>リネゾリド</td>
+        <td>6</td>
+        <td class="reserve">Reserve</td>
+      </tr>
+      <tr>
+        <td>テジゾリド</td>
+        <td>6</td>
+        <td class="reserve">Reserve</td>
+      </tr>
+      <tr>
+        <td>ダプトマイシン</td>
+        <td>6</td>
+        <td class="reserve">Reserve</td>
+      </tr>
+      <tr>
+        <td>シプロフロキサシン</td>
+        <td>9</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>レボフロキサシン</td>
+        <td>12</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>アジスロマイシン</td>
+        <td>6</td>
+        <td class="watch">Watch</td>
+      </tr>
+      <tr>
+        <td>コリスチン</td>
+        <td>6</td>
+        <td class="reserve">Reserve</td>
+      </tr>
+      <tr>
+        <td>メトロニダゾール</td>
+        <td>2</td>
+        <td class="access">Access</td>
+      </tr>
+    </table>
+  </section>
+
+  <script>
+    const toggleSwitch = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeLabel = document.getElementById('theme-label');
+
+    toggleSwitch.addEventListener('change', () => {
+      if (toggleSwitch.checked) {
+        body.classList.remove('pop-theme');
+        body.classList.add('cool-theme');
+        themeLabel.textContent = 'Cool Theme';
+      } else {
+        body.classList.remove('cool-theme');
+        body.classList.add('pop-theme');
+        themeLabel.textContent = 'Pop Theme';
+      }
+    });
+  </script>
+
+</body>
+</html>

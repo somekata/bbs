@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>細菌バトルゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- タブメニュー -->
+  <nav>
+    <button onclick="showTab('play')">PLAY</button>
+    <button onclick="showTab('status')">STAT</button>
+    <button onclick="showTab('purchase')">ITEM</button>
+    <button onclick="showTab('miscellaneous')">MISC</button>
+  </nav>
+
+  <!-- プレイ画面 -->
+  <section id="play" class="tab-content">
+    <header class="zone1">
+      <h1 id="gametitle">細菌バトルゲーム</h1>
+      <p>レベル <span id="player-level">1</span> | ラウンド <span id="round">1</span> | <span id="life-display"></span></p>
+    </header>
+    <section class="zone3">
+      <p>あなたのHP: <span id="player-hp">100</span>　|　スコア: <span id="score">0</span>　|　経験値: <span id="exp">0</span>　|　お小遣い: ¥<span id="gold">100</span></p>
+      <div id="player-hp-gauge" class="gauge">
+        <div class="gauge-fill"></div>
+      </div>
+    </section>
+    <section class="zone2">
+      <div class="enemy-info">
+        <div class="enemy-left">
+          <img id="bacteria-image" src="" alt="Bacteria Image"/><br>
+          <div id="labresult">
+            <p id="enemy-name">敵の名前</p>
+            <p id="susceptibility"></p>
+            <p id="geneIdentify"></p>
+            <p id="antigen"></p>
+          </div>
+        </div>
+        <div class="enemy-right">
+          <div id="enemy-hp-gauge" class="gauge">
+            <div class="gauge-fill"></div>
+          </div>
+          <p id="enemy-hp"></p>
+          <p id="message-box1" class="message-box">敵が現れた！</p>
+          <p id="message-box2" class="message-box">あなたの攻撃を選択してください。</p>
+        </div>
+      </div>
+    </section>
+    <section class="zone4">
+      <button id="attackBotan" onclick="attack()">攻撃</button>
+      <select id="antibiotic">
+        <option value="アンピシリン">アンピシリン</option>
+        <option value="セファゾリン">セファゾリン</option>
+        <option value="メロペネム">メロペネム</option>
+        <option value="バンコマイシン">バンコマイシン</option>
+        <option value="アジスロマイシン">アジスロマイシン</option>
+        <option value="シプロフロキサシン">シプロフロキサシン</option>
+      </select>
+      <hr>
+      <button onclick="useItem('小治の薬')">小治の薬</button>
+      <button onclick="useItem('中治の薬')">中治の薬</button>
+      <button onclick="useItem('完治の薬')">完治の薬</button><hr>
+      <button onclick="useItem('PCV')">PCV</button>
+      <button onclick="useItem('Hibワクチン')">Hibワクチン</button><hr>
+      <button onclick="useItem('グラム染色')">グラム染色</button>      
+      <button onclick="useItem('培養')">培養</button>      
+      <button onclick="useItem('同定')">同定</button>      
+      <button onclick="useItem('感受性')">感受性</button><br>
+      <button onclick="useItem('尿中抗原')">尿中抗原</button>
+      <button onclick="useItem('geneCheck')">geneCheck</button>      
+      <button onclick="useItem('geneQuick')">geneQuick</button>
+      <button onclick="useItem('TDM')">TDM</button> 
+    </section>
+  </section>
+
+  <!-- ステータス画面 -->
+  <section id="status" class="tab-content" style="display:none;">
+    <h2 style="text-align: center;">AWaRe比率とDASCのサマリー</h2>
+    <div id="aware-ratio-gauge" class="gauge">
+      <div id="access-fill" class="gauge-fill"></div>
+      <div id="watch-fill" class="gauge-fill"></div>
+      <div id="reserve-fill" class="gauge-fill"></div>
+    </div>    
+    <p id="aware-usage">Access: 0 (0%) | Watch: 0 (0%) | Reserve: 0 (0%)</p>
+    <p id="dasc-summary">DASC: 0</p>
+
+    <h2 style="text-align: center;">バトル履歴</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>レベル</th>
+          <th>ラウンド</th>
+          <th>敵</th>
+          <th>攻撃</th>
+          <th>ダメージ</th>
+        </tr>
+      </thead>
+      <tbody id="battle-history">
+        <!-- JavaScriptで履歴がここに追加されます -->
+      </tbody>
+    </table>    
+  </section>
+
+  <!-- 購入画面 -->
+<section id="purchase" class="tab-content" style="display:none;">
+  <h2>アイテムを購入</h2>
+  <ul>
+    <li>抗菌薬セット10 (¥250): 全ての抗菌薬を10ずつ増やす <button onclick="buyItem('抗菌薬セット10')">購入</button></li>
+    <li>抗菌薬各10: <select id="single-antibiotic">
+      <option value="アンピシリン">アンピシリン (¥50)</option>
+      <option value="セファゾリン">セファゾリン (¥30)</option>
+      <option value="メロペネム">メロペネム (¥120)</option>
+      <option value="バンコマイシン">バンコマイシン (¥50)</option>
+      <option value="アジスロマイシン">アジスロマイシン (¥60)</option>
+      <option value="シプロフロキサシン">シプロフロキサシン (¥90)</option>
+    </select>
+    <button onclick="buyItem('抗菌薬各10')">購入</button></li>
+    <li>PCV (¥100) <button onclick="buyItem('PCV')">購入</button></li>
+    <li>Hibワクチン (¥100) <button onclick="buyItem('Hibワクチン')">購入</button></li>
+    <li>小治の薬 (¥20) <button onclick="buyItem('小治の薬')">購入</button></li>
+    <li>中治の薬 (¥30) <button onclick="buyItem('中治の薬')">購入</button></li>
+    <li>完治の薬 (¥50) <button onclick="buyItem('完治の薬')">購入</button></li>
+    <li>グラム染色 (¥100) <button onclick="buyItem('グラム染色')">購入</button></li>
+    <li>培養 (¥100) <button onclick="buyItem('培養')">購入</button></li>
+    <li>同定 (¥100) <button onclick="buyItem('同定')">購入</button></li>
+    <li>感受性 (¥100) <button onclick="buyItem('感受性')">購入</button></li>
+    <li>尿中抗原 (¥500) <button onclick="buyItem('尿中抗原')">購入</button></li>
+    <li>geneCheck (¥1000) <button onclick="buyItem('geneCheck')">購入</button></li>
+    <li>geneQuick (¥1500) <button onclick="buyItem('geneQuick')">購入</button></li>
+    <li>TDM (¥500) <button onclick="buyItem('TDM')">購入</button></li>
+  </ul>
+  
+  <!-- お小遣いの残りを表示 -->
+  <p>お小遣いの残り: ¥<span id="remaining-gold">100</span></p>
+
+  <ul id="antibiotic-status">
+    <!-- Antibiotic and item status will be updated here -->
+  </ul>
+  <ul id="item-status">
+    <!-- Item status will be updated here -->
+  </ul>
+
+  <h2>購入履歴</h2>
+  <ul id="purchase-history">
+    <!-- JavaScriptで購入履歴がここに表示されます -->
+  </ul>
+</section>
+
+<section id="miscellaneous" class="tab-content" style="display:none;">
+  <h2>その他のコンテンツ</h2>
+  <h3>ゲームの解説</h3>
+  <p>
+    　このゲームは、抗菌薬適正使用を楽しく学ぶために開発されたバトルシミュレーションゲームです。プレイヤーは、細菌の耐性や攻撃力に応じた最適な抗菌薬を選びながらバトルを進めます。細菌ごとに異なる耐性（AMR）レベルが設定され、特定の細菌はランダムにAMRレベルが変動します。プレイヤーは、グラム染色や培養、同定、感受性検査を行い、敵の特性を見極めながら抗菌薬の有効性を判断し、戦略を立てて戦います。レベルが上がるごとに出現する細菌の種類が増え、治療や検査が複雑化していき、プレイヤーの判断力が試されます。また、レベルアップやゴールドの獲得により、アイテムや薬を購入することができ、楽しく学びながら抗菌薬の適正使用を理解することができます。今後もアップデートを予定しており、より多様なシナリオや機能の追加が期待されています。<br>
+    　バグや設定上の不具合に気付かれた場合は、コメントでお知らせください。
+  </p>
+  <p>
+    <button id="open-antibiogram-button">Antibiogramを開く</button>  
+  </p>
+  <p>
+    <button id="open-aware-button">AWaRe分類とDASC</button>  
+  </p>
+
+
+</section>
+  <script src="script.js"></script>
+  <script>
+    const openAntibiogramButton = document.getElementById('open-antibiogram-button');
+    openAntibiogramButton.addEventListener('click', () => {
+      window.open('antibiogram.html', '_blank', 'width=800,height=600');
+    });
+    const openAwareButton = document.getElementById('open-aware-button');
+    openAwareButton.addEventListener('click', () => {
+      window.open('aware.html', '_blank', 'width=800,height=600');
+    });
+  </script>
+</body>
+</html>

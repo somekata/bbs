@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antibiogram - Theme Switcher</title>
+  <link rel="stylesheet" href="table.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="pop-theme"> <!-- Default theme is pop -->
+
+  <h1>Antibiogram</h1>
+
+  <label class="switch">
+    <input type="checkbox" id="theme-toggle">
+    <span class="slider"></span>
+  </label>
+  <p id="theme-label">Pop Theme</p>
+  <table>
+    <caption>Bacterial Strains and Antibiotic Susceptibility (%)</caption>
+    <thead>
+      <tr>
+        <th>Bacterial Strain</th>
+        <th>ABPC</th>
+        <th>CEZ</th>
+        <th>MEPM</th>
+        <th>VCM</th>
+        <th>AZM</th>
+        <th>CPFX</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>MSSA</td>
+        <td class="low">30%</td>
+        <td class="high">100%</td>
+        <td class="high">100%</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+      </tr>
+      <tr>
+        <td>MRSA</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+      </tr>
+      <tr>
+        <td>大腸菌</td>
+        <td class="medium">50%</td>
+        <td class="high">100%</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+        <td class="medium">50%</td>
+      </tr>
+      <tr>
+        <td>ESBL産生菌</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+        <td class="low">20%</td>
+      </tr>
+      <tr>
+        <td>肺炎球菌</td>
+        <td class="high">100%</td>
+        <td class="high">100%</td>
+        <td class="high">100%</td>
+        <td class="high">100%</td>
+        <td class="low">30%</td>
+        <td class="low">0%</td>
+      </tr>
+      <tr>
+        <td>BLNAS</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="medium">50%</td>
+        <td class="high">90%</td>
+      </tr>
+      <tr>
+        <td>BLPAR</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="medium">50%</td>
+        <td class="high">90%</td>
+      </tr>
+      <tr>
+        <td>BLNAR</td>
+        <td class="low">0%</td>
+        <td class="low">0%</td>
+        <td class="high">100%</td>
+        <td class="low">0%</td>
+        <td class="medium">50%</td>
+        <td class="high">90%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const toggleSwitch = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeLabel = document.getElementById('theme-label');
+
+    toggleSwitch.addEventListener('change', () => {
+      if (toggleSwitch.checked) {
+        body.classList.remove('pop-theme');
+        body.classList.add('cool-theme');
+        themeLabel.textContent = 'Cool Theme';
+      } else {
+        body.classList.remove('cool-theme');
+        body.classList.add('pop-theme');
+        themeLabel.textContent = 'Pop Theme';
+      }
+    });
+  </script>
+
+</body>
+</html>

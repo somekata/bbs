@@ -1,0 +1,260 @@
+/* 全体のフォントと背景のデザイン */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1d1f21;
+    color: #f5f5f5;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  /* タイトル部分のデザイン（高さを低く） */
+  header.zone1 {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem; /* 高さを低くするためにpaddingを小さく */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  header.zone1 h1 {
+    font-size: 2rem; /* タイトルのフォントサイズも調整 */
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  
+  header.zone1 p {
+    font-size: 1rem; /* レベルとラウンドのフォントサイズも調整 */
+    margin: 0.3rem 0;
+    letter-spacing: 1px;
+  }
+  
+  /* タブメニューのデザイン */
+  nav {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0;
+    background-color: #444;
+    padding: 0.2rem 0;
+  }
+  
+  nav button {
+    background-color: #444;
+    color: #f5f5f5;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav button:hover {
+    background-color: #666;
+  }
+  
+  nav button:focus {
+    outline: none;
+    background-color: #888;
+  }
+  
+  /* ゾーン2とゾーン3のレイアウト */
+  .zone2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px;
+    border-bottom: 1px solid #444;
+  }
+  
+  .zone2 .enemy-left img {
+    width: 100px; /* 画像のサイズを0.6倍に */
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 2.4px 4.8px rgba(0, 0, 0, 0.5); /* 影も比例して調整 */
+  }
+  
+  .zone2 .enemy-left p, .zone2 .enemy-right p {
+    font-size: 0.78rem; /* テキストサイズも0.6倍に調整 */
+  }
+
+  .zone2 .enemy-right {
+    width:250px;
+  }
+
+  .zone3 {
+    background-color: #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top:2px;
+
+  }
+  
+  /* メッセージボックスのデザイン */
+  .message-box {
+    background-color: #333;
+    color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+    width: 90%;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+  }
+  
+  /* ゾーン4：ボタンとドロップダウンのデザイン */
+  .zone4 {
+    text-align: center;
+    padding: 2rem;
+    background-color: #222;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .zone4 select, .zone4 button {
+    padding: 1rem 1.5rem;
+    margin: 0.5rem;
+    font-size: 1.1rem;
+    background-color: #444;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .zone4 select:hover, .zone4 button:hover {
+    background-color: #666;
+  }
+  
+  .zone4 select:focus, .zone4 button:focus {
+    outline: none;
+    background-color: #888;
+  }
+  
+  /* テーブル（バトル履歴）のデザイン */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+  
+  table, th, td {
+    border: 1px solid #444;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: center;
+    background-color: #333;
+  }
+  
+  th {
+    background-color: #555;
+    font-size: 1.2rem;
+  }
+  
+  td {
+    font-size: 1.1rem;
+  }
+  
+  /* 敵情報のレイアウト */
+  .enemy-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+  
+  .enemy-left {
+    margin-right: 1rem;
+  }
+  
+  .enemy-left img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .enemy-right {
+    text-align: left;
+  }
+  
+  .enemy-right p {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+  }
+  
+/* ゲージ全体のデザイン */
+.gauge {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0; /* 背景色 */
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex; /* ゲージを横並びに表示 */
+}
+
+.gauge-fill {
+  height: 100%;
+  transition: width 0.5s ease; /* ゲージの変化を滑らかに */
+}
+
+/* 敵HPゲージの背景 */
+#enemy-hp-gauge {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0; /* 背景色 */
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 敵HPゲージの内部フィル */
+#enemy-hp-gauge .gauge-fill {
+  height: 100%;
+  background-color: #ff4c4c; /* HPゲージの塗りつぶし色 */
+  width: 100%; /* 初期状態は100% */
+  transition: width 0.5s ease; /* ゲージが滑らかに変わるようにする */
+}
+
+#access-fill {
+  background-color: blue; /* Accessの色 */
+}
+
+#watch-fill {
+  background-color: yellow; /* Watchの色 */
+}
+
+#reserve-fill {
+  background-color: red; /* Reserveの色 */
+}
+
+#player-hp-gauge .gauge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4b4b, #ffeb3b, #4caf50); /* カラフルなゲージ */
+  width: 100%; /* 初期状態は100% */
+  transition: width 0.5s ease; /* ゲージが滑らかに変わるようにする */
+}
+
+#life-display {
+  color: #ff4c4c;
+}
+
+#attackBotan {
+  background-color: #ffffff;
+  color:#111;
+  border-radius: 20px;
+  width:250px;
+}
+
+#labresult {
+  background-color: #f0fdff;
+  color:#1b1b1b;
+  border-radius: 3px;
+  padding:5px;
+  width: 100px;
+}
+
+
