@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>操作方法</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="scrollable-container">
+      <h1 style="text-align: center">操作説明</h1>
+
+      <!-- ボタンをタイトルと説明の間に配置 -->
+      <div class="button-container">
+        <button id="open-game-button">ゲームを開始する</button>
+      </div>
+      <div
+        style="
+          background-color: azure;
+          color: black;
+          padding: 1px 10px 5px 10px;
+          border-radius: 10px;
+        "
+      >
+        <p>
+          1. ゲーム開始<br />
+          　ページが読み込まれると自動でバトルがスタートします。まず、敵の細菌が表示されます。<br />
+          2. プレイヤーのステータス確認<br />
+          　画面上に表示される「ライフ」「HP」「ゴールド」「レベル」などのプレイヤーのステータスを確認してください。これらのステータスに基づいて、次の行動を決めましょう。<br />
+          3. 検査を実施<br />
+          　敵が現れた後、まずは「グラム染色」「培養」「同定」「感受性検査」を行うことで、敵の細菌の特性を明らかにします。レベルが上がると、これらの検査を自身で選んで実施する必要があります。<br />
+          ・グラム染色: 細菌がグラム陽性か陰性かを確認できます。<br />
+          ・培養: 細菌を培養して、敵の種類を特定する準備をします。<br />
+          ・同定: 培養後に細菌の種類を特定します。<br />
+          ・感受性検査: 細菌に対する抗菌薬の効果を調べます。<br />
+          4. 抗菌薬を選択<br />
+          　敵の特性に応じて、抗菌薬を選択します。選択した抗菌薬が敵に効果があれば、ダメージを与えることができます。<br />
+          　抗菌薬には「アンピシリン」「セファゾリン」「メロペネム」などがあり、敵の耐性に応じて選択肢を変える必要があります。<br />
+          5. アイテムの使用<br />
+          　戦闘中にHPが低下した場合、「回復薬」などのアイテムを使用してプレイヤーを回復できます。<br />
+          　ワクチンを使用することで、特定の細菌からの攻撃を一定期間防ぐことができます。<br />
+          6. 敵の攻撃<br />
+          　敵もプレイヤーに攻撃を仕掛けてきます。HPが0になるとライフが1つ減ります。ライフが全てなくなるとゲームオーバーです。<br />
+          7. レベルアップ<br />
+          　経験値を溜めてレベルアップすると、プレイヤーのHPやライフが増加し、新たな細菌が登場します。<br />
+          8. ゲームオーバーとリスタート<br />
+          　ライフが0になるとゲームオーバーになりますが、一定時間後にゲームがリスタートします。<br />
+          　操作はすべて画面のボタンをクリックすることで行います。<br />
+        </p>
+        <p>
+          　<a
+            href="https://www.youtube.com/watch?v=joedq2qlXRM"
+            target="_blank"
+            rel="noopener noreferrer"
+            >YouTube</a
+          >でも操作方法を公開しています。
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const openAntibiogramButton = document.getElementById("open-game-button");
+      openAntibiogramButton.addEventListener("click", () => {
+        window.location.href = "game.html"; // 現在のウィンドウで game.html を開く
+      });
+    </script>
+
+    <style>
+      /* コンテナの中央にボタンを配置 */
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0; /* タイトルと説明の間に余白を追加 */
+      }
+
+      /* ボタンのスタイル */
+      #open-game-button {
+        width: 300px;
+        height: 50px; /* 高さを調整 */
+        background: linear-gradient(
+          45deg,
+          #ff6b6b,
+          #ffcc5c
+        ); /* グラデーション */
+        border-radius: 15px; /* 角を丸くする */
+        border: 3px solid gray; /* 外側の枠 */
+        padding: 10px;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease; /* アニメーション */
+        box-shadow: 0 0 0 3px darkgray, 0 0 0 6px lightgray; /* 3重の枠 */
+      }
+
+      /* ボタンをホバーした時の効果 */
+      #open-game-button:hover {
+        transform: scale(1.1); /* 少し大きくなる */
+        background-color: darkred;
+      }
+
+      /* スクロールを可能にするスタイル */
+      .scrollable-container {
+        max-height: 100vh; /* 画面全体の高さまで */
+        overflow-y: auto; /* 縦方向のスクロールを有効に */
+        padding: 20px;
+        box-sizing: border-box; /* paddingを含めた幅・高さの計算 */
+      }
+
+      /* レスポンシブデザインのための追加 */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden; /* 全体のスクロールを無効化して、コンテナ内でスクロール */
+      }
+    </style>
+  </body>
+</html>
