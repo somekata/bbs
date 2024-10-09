@@ -708,6 +708,8 @@ function useItem(item) {
       alert('培養を実施しました。結果がわかるまで経験的治療をしてください。');      
     }else if(labotest.identifyCount === 1){
       alert('この病原体は既に判明しています。培養は必要ありません！');
+    }else if(labotest.cultureCount === 2){
+      alert('培養終了しています。同定を実施してください！');
     }else{
       alert('培養中です。培養は必要ありません！');
     }
@@ -906,7 +908,7 @@ let roundInProgress = false; // ラウンド進行中かどうかを追跡する
 function battleWin() {
   if (currentBacteria.hp > 0) return; // 敵がまだ倒されていない場合、処理を中断
 
-  document.getElementById('message-box1').textContent = `${currentBacteria.name}を倒しました！`;
+  document.getElementById('message-box1').textContent = `敵を倒しました！`;
 
   const goldReward = currentBacteria.reward.gold;
   const expReward = currentBacteria.reward.exp;
